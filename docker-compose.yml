@@ -6,7 +6,7 @@ services:
       - ADVERTISED_HOST=kafka
       - ADVERTISED_PORT=9092
     networks:
-      - foas-net
+      - fas-net
 
   crowdnav:
     container_name: crowdnav
@@ -16,7 +16,7 @@ services:
     depends_on:
       - kafka
     networks:
-      - foas-net
+      - fas-net
     volumes:
       - csvexchangevolume:/app/data/
 
@@ -28,13 +28,13 @@ services:
     depends_on:
       - kafka
     networks:
-      - foas-net
+      - fas-net
     ports:
       - '8080:8080'
 
 networks:
-  foas-net:
-    name: foas-net
+  fas-net:
+    name: fas-net
     driver: bridge
 
 volumes:

@@ -14,7 +14,7 @@ app = FastAPI(lifespan=startup)
     
 @app.get("/")
 async def root():
-    return {"message": "Hello Bigger Applications!----"}
+    return {"message": "CrowdNav-FAS2024"}
 
 app.include_router(monitor.router)
 app.include_router(monitor_schema.router)
