@@ -3,3 +3,8 @@ uvicorn==0.23.2
 kafka-python
 colorama
 aiokafka
+scikit-learn
+GPy
+requests
+pandas
+matplotlib

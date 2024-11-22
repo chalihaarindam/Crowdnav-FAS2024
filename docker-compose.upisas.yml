@@ -20,6 +20,19 @@ services:
     volumes:
       - csvexchangevolume:/app/data/
 
+
+  http-server:
+    container_name: http-server
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    depends_on:
+      - kafka
+    networks:
+      - fas-net
+    ports:
+      - '8080:8080'
+
 networks:
   fas-net:
     name: fas-net
