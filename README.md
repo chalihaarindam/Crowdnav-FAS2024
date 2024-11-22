@@ -12,13 +12,17 @@ Also runtime data is send to a kafka queue to allow stream processing and logger
 * Docker
 * Docker Compose
 
-## Regular setup
-* Run `docker compose up -d`  to run all the images (CrowdNav, Kafka, API) in detached mode
 
 ## UPISAS setup
 * Run `docker compose -f docker-compose.upisas.yml up -d`  to run all the images (CrowdNav, Kafka) in detached mode
 * Run `docker build -f api/Dockerfile.upisas -t http-server-group-6_4 ./api` to build the API image
+* Run  ` docker run -d -p 8080:8080 --name http-server --network fas-net http-server-group-6_4`  to run http-server
 
+## RUN Bayesian Optimization 
+* Run  ` docker exec -it [container id] python /code/experiment_runner/main.py`  to run http-server
+* Run  `docker exec -it [container id] cat /code/results/data/baseline_results.csv`  to run http-server
+
+  
 ## Folder structure
 * **api**: This contains the HTTP Server which is implemented using FastAPI
   * The API is documented at http://localhost:8080/docs or http://localhost:8080/redoc
