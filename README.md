@@ -21,6 +21,8 @@ Also runtime data is send to a kafka queue to allow stream processing and logger
 ## RUN Bayesian Optimization 
 * Run  ` docker exec -it http-server python /code/experiment_runner/main.py`  to run http-server
 * Run  `docker exec -it http-server cat /code/results/data/baseline_results.csv`  to run http-server
+* **docker cp http-server:/code/results ./results
+**
 
   
 ## Folder structure
