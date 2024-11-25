@@ -9,6 +9,9 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./app /code/app
 COPY ./specifications ./specifications
 COPY ./experiment_runner /code/experiment_runner
-COPY ./results /code/results
+
+
+RUN mkdir -p /code/results/data /code/results/visualizations
+RUN mkdir -p /code/results/data /code/results/data
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080", "--reload"]
