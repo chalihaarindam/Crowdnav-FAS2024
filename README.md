@@ -16,16 +16,17 @@ Also runtime data is send to a kafka queue to allow stream processing and logger
 ## UPISAS setup
 * Run `docker compose -f docker-compose.upisas.yml up -d`  to run all the images (CrowdNav, Kafka) in detached mode
 * Run `docker build -f api/Dockerfile.upisas -t http-server-group-6_4 ./api` to build the API image
-* Run  ` docker run -d -p 8080:8080 --name http-server --network fas-net http-server-group-6_4`  to run http-server
-docker run -d -p 8080:8080 --name http-server --network fas-net \
-  -v $(pwd)/results:/code/results \
-  http-server-group-6_4
-This will automatically sync the results directory between your host machine and the container, eliminating the need for manual docker cp commands
+* Run `docker stop http server` && `docker rm http server` to stop the crowdnav http server.
+* Run  ` docker run -d -p 8080:8080 --name http-server --network fas-net http-server-group-6_4`  to run http-server with UPISAS and api endpoints
+
+
 ## RUN Bayesian Optimization 
+
+* #bo = EpsilonGreedy(parameter_bounds, epsilon=0.1) uncomment this line for Adaptation strategy line 38 main.py and comment line 40
 * Run  ` docker exec -it http-server python /code/experiment_runner/main.py`  to run http-server
 * Run  `docker exec -it http-server cat /code/results/data/baseline_results.csv`  to run http-server
-* **docker cp http-server:/code/results ./results
-**
+* RUN `docker cp http-server:/code/results ./results` to save results
+  
 
   
 ## Folder structure
